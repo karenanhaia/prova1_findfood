@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<h1>Meals</h1>
+  <h1>Refeições</h1>
+  <%= link_to 'Nova Refeição', new_meal_path, :class => "btn btn-success" %>
+  <br><br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Productiontime</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meals.each do |meal| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= meal.description %></td>
-        <td><%= meal.price %></td>
-        <td><%= meal.productiontime %></td>
-        <td><%= link_to 'Show', meal %></td>
-        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
-        <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Restaurante</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Tempo de Produção</th>
+        <th>Ingredientes</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @meals.each do |meal| %>
+        <tr>
+          <td><%= meal.restaurant.name %></td>
+          <td><%= meal.description %></td>
+          <td><%= meal.price %></td>
+          <td><%= meal.productiontime %></td>
+          <td><%= meal.ingredients.map(&:description).join(', ') %></td>
+          <td>
+            <div class="btn-group">
+              <%= link_to 'Mostrar', meal, :class => "btn btn-info" %></button>
+              <%= link_to 'Editar', edit_meal_path(meal), :class => "btn btn-warning" %>
+              <%= link_to 'Excluir', meal, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Meal', new_meal_path %>
+</div>

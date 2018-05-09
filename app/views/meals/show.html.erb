@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @meal.description %>
-</p>
+<div class="container-fluid">
+  <div class="col-md-3">
+    <div class="panel panel-default panel-meal">
+      <h2>Descrição: <%= @meal.description %></h2>
+      <h4>Preço: R$ <%= @meal.price %></h4>
+      <p>Restaurante: <%= @meal.restaurant.name %></p>
+      <small>Tempo de Produção: <%= @meal.productiontime %></small>
+      <br>
+      <small>Ingredientes: <%= @meal.ingredients.map(&:description).join(', ') %></small>
+    </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @meal.price %>
-</p>
-
-<p>
-  <strong>Productiontime:</strong>
-  <%= @meal.productiontime %>
-</p>
-
-<%= link_to 'Edit', edit_meal_path(@meal) %> |
-<%= link_to 'Back', meals_path %>
+    <%= link_to 'Editar', edit_meal_path(@meal), :class => "btn btn-warning" %>
+    <%= link_to 'Voltar', meals_path, :class => "btn btn-primary" %>
+  </div>
+</div>

@@ -1,19 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<div class="container-fluid">
+  <div class="col-md-3">
+    <div class="panel panel-default panel-meal">
+      <h2>Nome: <%= @restaurant.name %></h2>
+      <h4>Endereço: <%= @restaurant.address %></h4>
+      <h4>Telefone: <%= @restaurant.phonenumber %></h4>
+    </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Phonenumber:</strong>
-  <%= @restaurant.phonenumber %>
-</p>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+    <%= link_to 'Editar', edit_restaurant_path(@restaurant), :class => "btn btn-warning" %>
+    <%= link_to 'Voltar', restaurants_path, :class => "btn btn-primary" %>
+  </div>
+</div>

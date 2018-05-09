@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :restaurant_name %>
+  <div class="field form-group">
+    <label>Nome</label>
+    <%= form.text_field :name, id: :restaurant_name, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :restaurant_address %>
+  <div class="field form-group">
+    <label>Endereço</label>
+    <%= form.text_field :address, id: :restaurant_address, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :phonenumber %>
-    <%= form.text_field :phonenumber, id: :restaurant_phonenumber %>
+  <div class="field form-group">
+    <label>Número de Telefone</label>
+    <%= form.text_field :phonenumber, id: :restaurant_phonenumber, :class => "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit submit_name, :class => "btn btn-success" %>
   </div>
 <% end %>

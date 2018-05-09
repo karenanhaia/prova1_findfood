@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ingredient.description %>
-</p>
+<div class="container-fluid">
+  <div class="col-md-3">
+    <div class="panel panel-default panel-meal">
+      <h2>Descrição: <%= @ingredient.description %></h2>
+    </div>
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+    <%= link_to 'Editar', edit_ingredient_path(@ingredient), :class => "btn btn-warning" %>
+    <%= link_to 'Voltar', ingredients_path, :class => "btn btn-primary" %>
+  </div>
+</div>
