@@ -12,6 +12,16 @@ class RestaurantsController < ApplicationController
   def show
   end
 
+  def homepage
+    @restaurants = Restaurant.all.order("name")
+    @restaurants = @restaurants.joins("INNER JOIN meals ON meals.restaurant_id = restaurants.id AND meals.category_id = ", params[:category_id]).distinct unless params[:category_id].blank?
+    @restaurants = @restaurants.joins("INNER JOIN meals ON meals.restaurant_id = restaurants.id AND UPPER(meals.description) like ", "'%#{params[:search_term].to_s.upcase}%'").distinct unless params[:search_term].blank?
+  end
+
+  def showmeals
+    @restaurants = Restaurant.all.where(id: params[:restaurant_id]) unless params[:restaurant_id].blank?
+  end
+
   # GET /restaurants/new
   def new
     @restaurant = Restaurant.new

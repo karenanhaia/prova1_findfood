@@ -5,6 +5,7 @@
     <div class="panel panel-default panel-meal">
       <h2>Descrição: <%= @meal.description %></h2>
       <h4>Preço: R$ <%= @meal.price %></h4>
+      <h4>Categoria: <%= @meal.category.description %></h4>
       <p>Restaurante: <%= @meal.restaurant.name %></p>
       <small>Tempo de Produção: <%= @meal.productiontime %></small>
       <br>

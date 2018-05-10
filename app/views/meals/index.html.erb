@@ -11,6 +11,7 @@
         <th>Restaurante</th>
         <th>Descrição</th>
         <th>Preço</th>
+        <th>Categoria</th>
         <th>Tempo de Produção</th>
         <th>Ingredientes</th>
         <th colspan="3"></th>
@@ -23,6 +24,7 @@
           <td><%= meal.restaurant.name %></td>
           <td><%= meal.description %></td>
           <td><%= meal.price %></td>
+          <td><%= meal.category.description %></td>
           <td><%= meal.productiontime %></td>
           <td><%= meal.ingredients.map(&:description).join(', ') %></td>
           <td>

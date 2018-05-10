@@ -1,0 +1,28 @@
+<div class="container-fluid">
+
+  <% @restaurants.all.each do |restaurant| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2><%= restaurant.name %></h2>
+        <p>Endereço: <%= restaurant.address %></p>
+        <p>Telefone: <%= restaurant.phonenumber %></p>
+      </div>
+
+      <div class="panel-body">
+        <% restaurant.meals.each do |meal| %>
+          <div class="col-md-3">
+            <div class="panel panel-default panel-meal">
+              <h3><%= meal.description %></h3>
+              <h5>Preço: R$ <%= meal.price %></h5>
+              <h5>Categoria: <%= meal.category.description %></h5>
+              <small>Tempo de Produção: <%= meal.productiontime %></small>
+              <br>
+              <small>Ingredientes: <%= meal.ingredients.map(&:description).join(', ') %></small>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
