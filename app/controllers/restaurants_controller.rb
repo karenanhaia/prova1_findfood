@@ -16,10 +16,12 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all.order("name")
     @restaurants = @restaurants.joins("INNER JOIN meals ON meals.restaurant_id = restaurants.id AND meals.category_id = ", params[:category_id]).distinct unless params[:category_id].blank?
     @restaurants = @restaurants.joins("INNER JOIN meals ON meals.restaurant_id = restaurants.id AND UPPER(meals.description) like ", "'%#{params[:search_term].to_s.upcase}%'").distinct unless params[:search_term].blank?
+    search_meal(params[:search_term].to_s)
   end
 
   def showmeals
     @restaurants = Restaurant.all.where(id: params[:restaurant_id]) unless params[:restaurant_id].blank?
+    @search = $m
   end
 
   # GET /restaurants/new
@@ -80,5 +82,9 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :phonenumber)
+    end
+
+    def search_meal(term)
+      $m = term
     end
 end

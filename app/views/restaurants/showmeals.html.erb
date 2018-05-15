@@ -1,6 +1,5 @@
 <div class="container-fluid">
-
-  <% @restaurants.all.each do |restaurant| %>
+  <% @restaurants.each do |restaurant| %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2><%= restaurant.name %></h2>
@@ -9,10 +8,10 @@
       </div>
 
       <div class="panel-body">
-        <% restaurant.meals.each do |meal| %>
+        <% restaurant.meals.order("description").each do |meal| %>
           <div class="col-md-3">
             <div class="panel panel-default panel-meal">
-              <h3><%= meal.description %></h3>
+              <h3><%= highlight(meal.description, @search) %></h3>
               <h5>Preço: R$ <%= meal.price %></h5>
               <h5>Categoria: <%= meal.category.description %></h5>
               <small>Tempo de Produção: <%= meal.productiontime %></small>

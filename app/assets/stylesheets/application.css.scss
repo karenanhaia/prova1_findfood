@@ -26,8 +26,8 @@ a {
   color: #FFF !important;
 }
 
-.panel a, .panel a:focus, .panel a:active {
-  color: #FFF !important;
+.panel a, .panel a:focus, .panel a:active, .panel a:visited {
+  color: #333 !important;
 }
 
 .navbar a {
@@ -37,4 +37,8 @@ a {
 
 .container-fluid {
   margin-left: 10px !important;
+}
+
+mark {
+  background: #FFFF77;
 }
